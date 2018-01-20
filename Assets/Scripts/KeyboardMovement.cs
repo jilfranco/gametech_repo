@@ -10,7 +10,7 @@ public class KeyboardMovement : MonoBehaviour
     private float moveY;
 	
 	// Update is called once per frame
-	void Update ()
+	private void Update ()
     {
         CheckKeyInput();
         MovePlayer();
@@ -24,6 +24,9 @@ public class KeyboardMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        this.transform.Translate(new Vector3(moveX * moveSpeed, moveY * moveSpeed, 0));
+        //transform.Translate(new Vector3(moveX * moveSpeed, moveY * moveSpeed, 0));
+        Vector2 newPosition = transform.position;
+        newPosition = newPosition + new Vector2(moveX * moveSpeed, moveY * moveSpeed);
+        GetComponent<Rigidbody2D>().MovePosition(newPosition);
     }
 }
