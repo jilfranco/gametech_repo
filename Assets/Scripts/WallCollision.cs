@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WallCollision : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D wallCollision)
+    private void OnCollisionEnter2D(Collision2D playerCollision)
     {
-        Debug.Log("Collison");
+        playerCollision.transform.localScale *= 1.5f;
+        Debug.Log("Player collison");
     }
 }
