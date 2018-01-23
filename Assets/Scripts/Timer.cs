@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
 
     private void GetAndSetTime()
     {
-        timeElapsed = Time.time;
+        timeElapsed = Time.timeSinceLevelLoad;
         this.GetComponent<Text>().text = "Time Elapsed: " + timeElapsed.ToString("#0.0");
     }
 }

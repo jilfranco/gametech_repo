@@ -4,22 +4,12 @@ using UnityEngine;
 
 public class PowerUpPickup : MonoBehaviour
 {
-    [SerializeField] private GameObject PowerUpGameObject;
-
-	// Use this for initialization
-	void Start ()
-	{
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		
-	}
-
+    [SerializeField] private GameObject lilFace;
     private void OnTriggerEnter2D(Collider2D powerUpCollision)
     {
-        Debug.Log("power up");
+        Debug.Log("Power Up");
+        powerUpCollision.transform.localScale *= 0.5f;
+        lilFace.SetActive(true);
+        Destroy(gameObject);
     }
 }
