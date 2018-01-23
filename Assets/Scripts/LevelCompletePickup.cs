@@ -22,13 +22,13 @@ public class LevelCompletePickup : MonoBehaviour
         if (player.transform.localScale.x > 2.251f)
         {
             Debug.Log("him big");
-            EndLevel();
+            StartCoroutine(EndLevel());
         }
     }
     private void OnTriggerEnter2D(Collider2D playerCollision)
     {
-        Debug.Log("Level Complete");
-        LevelComplete();    
+        Debug.Log("Level Complete Triggered");
+	    StartCoroutine(LevelComplete());
     }
 
     private IEnumerator EndLevel()
@@ -36,6 +36,7 @@ public class LevelCompletePickup : MonoBehaviour
         Debug.Log("End Level");
         fadeImageUI.SetActive(true);
         levelFailedText.SetActive(true);
+		Destroy(GetComponent<Collider2D>());
         yield return new WaitForSeconds(uiStaySeconds);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
