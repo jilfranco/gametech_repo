@@ -21,7 +21,6 @@ public class LevelCompletePickup : MonoBehaviour
     {
         if (player.transform.localScale.x > 2.251f)
         {
-            Debug.Log("him big");
             StartCoroutine(EndLevel());
         }
     }

@@ -2854,10 +2854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7e60a54a91d7b43bdafe85f29a1eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeImage: {fileID: 786537513}
-  startText: {fileID: 1837858352}
+  fadeImageUI: {fileID: 786537513}
   levelCompleteText: {fileID: 1746427697}
-  gameCompleteText: {fileID: 161833899}
 --- !u!1 &2120958340
 GameObject:
   m_ObjectHideFlags: 0
