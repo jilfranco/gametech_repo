@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using WaitForNextFrame = UnityEngine.WaitForEndOfFrame;
 
 public class UIManager : MonoBehaviour
 {
+    private float timeElapsed;
 	[SerializeField] private float uiStaySeconds;
 	[SerializeField] private GameObject player;
+    [SerializeField] private GameObject timerText;
     [SerializeField] private GameObject fadeImageUI;
     [SerializeField] private GameObject levelStartText;
     [SerializeField] private GameObject levelFailedText;
@@ -17,17 +20,25 @@ public class UIManager : MonoBehaviour
 
 	void Start ()
 	{
-	    TurnOnLevelStartUI();
-		TurnOnTimer();
+        TurnOnLevelStartUI();
 	}
 
-	private void Update()
+    private void Update()
 	{
+        GetAndSetTime();
 		if (player.transform.localScale.x > 2.251f)
         {
             StartCoroutine(LevelFailedUI());
         }
 	}	
+
+    private void GetAndSetTime()
+    {
+        if (!timerText.activeSelf)
+            return;
+        timeElapsed = Time.timeSinceLevelLoad-uiStaySeconds;
+        timerText.GetComponent<Text>().text = "Time Elapsed: " + timeElapsed.ToString("#0.0");
+    }
 
 	public void TurnOnLevelStartUI()
 	{
@@ -49,20 +60,16 @@ public class UIManager : MonoBehaviour
 		StartCoroutine(GameEndUI());
 	}
 
-	public void TurnOnTimer()
-	{
-		StartCoroutine(TimerWait());
-	}
-
     private IEnumerator LevelStartUI()
     {
         Debug.Log("Level Start");
         fadeImageUI.SetActive(true);
         levelStartText.SetActive(true);
         yield return new WaitForSeconds(uiStaySeconds);
-		canMoveReference.SetCanMove(true);
 		fadeImageUI.SetActive(false);
         levelStartText.SetActive(false);
+		canMoveReference.SetCanMove(true);
+        timerText.SetActive(true);
     }
 
 	private IEnumerator LevelCompleteUI()
@@ -73,7 +80,6 @@ public class UIManager : MonoBehaviour
 		canMoveReference.SetCanMove(false);
         yield return new WaitForSeconds(uiStaySeconds);
         SceneManager.LoadScene("MazeLevel_2");
-		
     }
 	
 	private IEnumerator LevelFailedUI()
@@ -96,10 +102,5 @@ public class UIManager : MonoBehaviour
 		Destroy(player.GetComponent<CircleCollider2D>());
         yield return new WaitForSeconds(uiStaySeconds*1.5f);
         SceneManager.LoadScene("MazeLevel_1");
-	}
-
-	private IEnumerator TimerWait()
-	{
-		yield return new WaitForSeconds(uiStaySeconds);
 	}
 }

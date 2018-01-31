@@ -2030,14 +2030,13 @@ GameObject:
   - component: {fileID: 1424966361}
   - component: {fileID: 1424966363}
   - component: {fileID: 1424966362}
-  - component: {fileID: 1424966364}
   m_Layer: 5
   m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1424966361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2095,18 +2094,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1424966360}
---- !u!114 &1424966364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1424966360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73dbd5f50a744d04b9e01256d8fd2ee9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerWaitReference: {fileID: 1935903212}
 --- !u!1 &1491257453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2854,6 +2841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiStaySeconds: 2
   player: {fileID: 144809721}
+  timerText: {fileID: 1424966360}
   fadeImageUI: {fileID: 786537513}
   levelStartText: {fileID: 1837858352}
   levelFailedText: {fileID: 1641814990}

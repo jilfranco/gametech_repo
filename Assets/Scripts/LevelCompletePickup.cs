@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelCompletePickup : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class LevelCompletePickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D playerCollision)
     {
-		managerReference.TurnOnLevelCompleteUI();
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MazeLevel_2"))
+            managerReference.TurnOnGameEndUI();
+        else
+            managerReference.TurnOnLevelCompleteUI();
     }    
 }
