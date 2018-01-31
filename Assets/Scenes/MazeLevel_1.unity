@@ -2106,6 +2106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73dbd5f50a744d04b9e01256d8fd2ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerWaitReference: {fileID: 1935903212}
 --- !u!1 &1491257453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,10 +2582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547499a2b356c744b851382d69bac618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiStaySeconds: 3
-  fadeImageUI: {fileID: 786537513}
-  levelFailedText: {fileID: 1641814990}
-  levelCompleteText: {fileID: 1746427697}
+  managerReference: {fileID: 1935903212}
 --- !u!1 &1830446252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2854,8 +2852,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7e60a54a91d7b43bdafe85f29a1eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiStaySeconds: 2
+  player: {fileID: 144809721}
   fadeImageUI: {fileID: 786537513}
+  levelStartText: {fileID: 1837858352}
+  levelFailedText: {fileID: 1641814990}
   levelCompleteText: {fileID: 1746427697}
+  gameEndText: {fileID: 161833899}
+  canMoveReference: {fileID: 144809725}
 --- !u!1 &2120958340
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class KeyboardMovement : MonoBehaviour
     [SerializeField] float moveSpeed;
     private float moveX;
     private float moveY;
+	private bool canMove;
 	
 	// Update is called once per frame
 	private void Update ()
@@ -24,9 +25,15 @@ public class KeyboardMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        //transform.Translate(new Vector3(moveX * moveSpeed, moveY * moveSpeed, 0));
+		if (!canMove)
+			return;
         Vector2 newPosition = transform.position;
         newPosition = newPosition + new Vector2(moveX * moveSpeed, moveY * moveSpeed);
         GetComponent<Rigidbody2D>().MovePosition(newPosition);
     }
+
+	public void SetCanMove(bool newValue)
+	{
+		canMove=newValue;
+	}
 }

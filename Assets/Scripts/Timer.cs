@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    private float timeElapsed;
-    //private GameObject timerText;
-
-	// Use this for initialization
+    [SerializeField] private UIManager timerWaitReference;
+	private float timeElapsed;
+    
 	void Start ()
 	{
-	    //timerText = GameObject.Find("TimerText");
+	    timerWaitReference.TurnOnTimer();
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
 		GetAndSetTime();
@@ -25,4 +23,6 @@ public class Timer : MonoBehaviour
         timeElapsed = Time.timeSinceLevelLoad;
         this.GetComponent<Text>().text = "Time Elapsed: " + timeElapsed.ToString("#0.0");
     }
+
+	
 }
