@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject levelFailedText;
     [SerializeField] private GameObject levelCompleteText;
 	[SerializeField] private GameObject gameEndText;
+    [SerializeField] private GameObject yourTimeText;
 	[SerializeField] private KeyboardMovement canMoveReference;
 
 	void Start ()
@@ -75,9 +76,12 @@ public class UIManager : MonoBehaviour
 	private IEnumerator LevelCompleteUI()
     {
         Debug.Log("Level Complete");
+        yourTimeText.GetComponent<Text>().text = "Good job! Your time: " + timeElapsed.ToString("#0.0");
         fadeImageUI.SetActive(true);
         levelCompleteText.SetActive(true);
+        yourTimeText.SetActive(true);
 		canMoveReference.SetCanMove(false);
+        timerText.SetActive(false);
         yield return new WaitForSeconds(uiStaySeconds);
         SceneManager.LoadScene("MazeLevel_2");
     }
@@ -85,10 +89,13 @@ public class UIManager : MonoBehaviour
 	private IEnumerator LevelFailedUI()
     {
         Debug.Log("Level Failed");
+        yourTimeText.GetComponent<Text>().text = "You're...not very good at this! You lasted: " + timeElapsed.ToString("#0.0");
         fadeImageUI.SetActive(true);
         levelFailedText.SetActive(true);
-		canMoveReference.SetCanMove(false);
-		Destroy(player.GetComponent<CircleCollider2D>());
+        yourTimeText.SetActive(true);
+        canMoveReference.SetCanMove(false);
+        timerText.SetActive(false);
+        Destroy(player.GetComponent<CircleCollider2D>());
         yield return new WaitForSeconds(uiStaySeconds);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -96,11 +103,14 @@ public class UIManager : MonoBehaviour
 	private IEnumerator GameEndUI()
 	{
 		Debug.Log("Game End");
+        yourTimeText.GetComponent<Text>().text = "You finished the game! Your time: " + timeElapsed.ToString("#0.0");
         fadeImageUI.SetActive(true);
         gameEndText.SetActive(true);
+        yourTimeText.SetActive(true);
 		canMoveReference.SetCanMove(false);
-		Destroy(player.GetComponent<CircleCollider2D>());
+        timerText.SetActive(false);
+        Destroy(player.GetComponent<CircleCollider2D>());
         yield return new WaitForSeconds(uiStaySeconds*1.5f);
-        SceneManager.LoadScene("MazeLevel_1");
+        SceneManager.LoadScene("MenuScene");
 	}
 }
