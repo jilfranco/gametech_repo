@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject levelCompleteText;
 	[SerializeField] private GameObject gameEndText;
     [SerializeField] private GameObject yourTimeText;
+	[SerializeField] private GameObject resettingGameText;
 	[SerializeField] private KeyboardMovement canMoveReference;
 
 	void Start ()
@@ -107,6 +108,7 @@ public class UIManager : MonoBehaviour
         fadeImageUI.SetActive(true);
         gameEndText.SetActive(true);
         yourTimeText.SetActive(true);
+		resettingGameText.SetActive(true);
 		canMoveReference.SetCanMove(false);
         timerText.SetActive(false);
         Destroy(player.GetComponent<CircleCollider2D>());

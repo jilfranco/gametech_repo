@@ -5,7 +5,7 @@ using UnityEngine;
 public class WallCollision : MonoBehaviour
 {
     [SerializeField] private GameObject playerLilFaceOh;
-    private GameObject lilFace;
+    [SerializeField] private GameObject lilFace;
 
     private void OnCollisionEnter2D(Collision2D playerCollision)
     {
@@ -16,11 +16,20 @@ public class WallCollision : MonoBehaviour
     
     private IEnumerator UnhappyFace()
     {
-        lilFace = GameObject.Find("PlayerFace");
-        lilFace.SetActive(false);
-        playerLilFaceOh.SetActive(true);
-        yield return new WaitForSeconds(3.5f);
-        playerLilFaceOh.SetActive(false);
-        lilFace.SetActive(true);
+	    if (lilFace.activeInHierarchy)
+	    {
+			lilFace.SetActive(false);
+			playerLilFaceOh.SetActive(true);
+			yield return new WaitForSeconds(3.5f);
+			playerLilFaceOh.SetActive(false);
+			lilFace.SetActive(true); 
+	    }
+
+	    else
+	    {
+		    playerLilFaceOh.SetActive(true);
+		    yield return new WaitForSeconds(3.5f);
+		    playerLilFaceOh.SetActive(false);
+	    }
     }
 }

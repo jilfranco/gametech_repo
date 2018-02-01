@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 0}
+  lilFace: {fileID: 0}
 --- !u!212 &117255750
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -540,6 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!1 &161833899
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,9 +609,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'GAME COMPLETE!
-
-    (resetting game...)'
+  m_Text: GAME COMPLETE!
 --- !u!222 &161833902
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -726,6 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!1 &357339756
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,6 +837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!1 &437527608
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!61 &437527611
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -988,6 +991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 0}
+  lilFace: {fileID: 0}
 --- !u!212 &531159599
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1140,6 +1144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!1 &616257774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,6 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!1 &786537513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,6 +1366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 0}
+  lilFace: {fileID: 0}
 --- !u!212 &847493094
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1402,6 +1409,80 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &853859791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 853859792}
+  - component: {fileID: 853859794}
+  - component: {fileID: 853859793}
+  m_Layer: 5
+  m_Name: ResettingGameText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &853859792
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 853859791}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 1935903211}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -93.7}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &853859793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 853859791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.76, b: 0.73399997, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 75
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: (resetting game...)
+--- !u!222 &853859794
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 853859791}
 --- !u!1 &856519203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,6 +1732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!61 &991638813
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1937,7 +2019,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 8d3cfe68b4b892d4bbbf4f2ad15481f0, type: 3}
   m_Color: {r: 0.684, g: 0.31543893, b: 0.29685602, a: 1}
   m_FlipX: 0
@@ -1973,6 +2055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!1 &1102786918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,6 +2166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!1 &1109422695
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,6 +2284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!61 &1247982218
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2377,6 +2462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!1 &1329372169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2420,6 +2506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!61 &1329372172
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2515,7 +2602,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935903211}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2739,6 +2826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!1 &1560566097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,6 +2870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!61 &1560566100
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2966,6 +3055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!61 &1699818318
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3217,6 +3307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!1 &1796407651
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,6 +3460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 0}
+  lilFace: {fileID: 0}
 --- !u!212 &1830446256
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3578,6 +3670,7 @@ RectTransform:
   - {fileID: 161833900}
   - {fileID: 1641814991}
   - {fileID: 1109422696}
+  - {fileID: 853859792}
   - {fileID: 1390460696}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -3607,6 +3700,7 @@ MonoBehaviour:
   levelCompleteText: {fileID: 1746427697}
   gameEndText: {fileID: 161833899}
   yourTimeText: {fileID: 1109422695}
+  resettingGameText: {fileID: 853859791}
   canMoveReference: {fileID: 144809725}
 --- !u!1 &1976489195
 GameObject:
@@ -3722,6 +3816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
 --- !u!61 &1987272517
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3899,3 +3994,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLilFaceOh: {fileID: 1976489195}
+  lilFace: {fileID: 1054268227}
