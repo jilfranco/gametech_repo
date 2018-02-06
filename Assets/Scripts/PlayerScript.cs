@@ -55,16 +55,17 @@ public class PlayerScript : MonoBehaviour
 	// set player movement bounds based on viewport aspect ratio
 	private void CheckBounds()
 	{
-		Vector2 min = Camera.main.ViewportToWorldPoint(Vector2.zero);
-		Vector2 max = Camera.main.ViewportToWorldPoint(Vector2.one);
+		Vector2 minBounds = Camera.main.ViewportToWorldPoint(Vector2.zero);
+		Vector2 maxBounds = Camera.main.ViewportToWorldPoint(Vector2.one);
 
 		Vector2 playerSize = new Vector2(0.68f, 0.49f);
-		min = min + playerSize;
-		max = max - playerSize;
+		minBounds = minBounds + playerSize;
+		maxBounds = maxBounds - playerSize;
 
-		float newX = Mathf.Clamp(transform.position.x, min.x, max.x);
-		float newY = Mathf.Clamp(transform.position.y, min.y, min.y + 2);
-		transform.position = new Vector3(newX, newY, transform.position.z);
+		float newXPosition = Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x);
+		float newYPosition = Mathf.Clamp(transform.position.y, minBounds.y, minBounds.y + 2); // +2 is the up limit
+
+		transform.position = new Vector3(newXPosition, newYPosition, transform.position.z);
 	}
 
 	private void SpawnLaser()

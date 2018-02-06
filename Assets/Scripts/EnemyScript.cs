@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-	private float respawnX;
-	private float respawnY;
+	//private float respawnX;
+	//private float respawnY;
 	private GameObject Player;
 
 	private void Awake()
@@ -15,7 +15,7 @@ public class EnemyScript : MonoBehaviour
 
 	private void Start()
 	{
-		respawnX = transform.position.x;
+		//respawnX = transform.position.x;
 	}
 
 	private void OnCollisionEnter2D(Collision2D collisionEvent)
@@ -33,9 +33,18 @@ public class EnemyScript : MonoBehaviour
 	public void RespawnEnemy()
 	{
 		gameObject.SetActive(true);
-		Vector2 newPosition = new Vector2(respawnX, respawnY);
-		transform.position = newPosition;
-		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+		Vector2 enemySpawnBoundsMin = Camera.main.ViewportToWorldPoint(Vector2.zero);
+		Vector2 enemySpawnBoundsMax = Camera.main.ViewportToWorldPoint(Vector2.one);
+		
+		float randomXMover = Random.Range(enemySpawnBoundsMin.x, enemySpawnBoundsMax.x);
+
+		float newXPosition = Mathf.Clamp(transform.position.x, randomXMover, randomXMover);
+		float newYPosition = Mathf.Clamp(transform.position.y, enemySpawnBoundsMax.y + 3, enemySpawnBoundsMax.y + 3);
+
+		transform.position = new Vector2(newXPosition, newYPosition);
+
+		GetComponent<Rigidbody2D>().AddForce(transform.up * -100); 
 	}
 
 	private void KillEnemy()
