@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-	public GameObject[] enemyArray;
-	public List<GameObject> activeEnemyList;
-
 	// make the global instance of the Game Manager, make it public to get, private to set 
 	// (as to not accidentally set it somewhere else like a doofus)
 	public static GameManager managerInstance { get; private set; }
 
+	public GameObject[] enemyArray;
+	public List<GameObject> activeEnemyList;
+
+    private GameObject player;
+
 	private void Awake()
 	{
 		managerInstance = this;
+        player = GameObject.Find("Player");
 	}
 	
 	private void Start()
@@ -22,6 +25,13 @@ public class GameManager : MonoBehaviour
 		ManagerInitializeEnemies();
 	}
 
+    // player functions
+    public void ManagerKillPlayer()
+    {
+        Destroy(player);
+    }
+
+    // enemies functions
 	private void ManagerInitializeEnemies()
 	{
 		activeEnemyList = new List<GameObject>();
@@ -31,7 +41,8 @@ public class GameManager : MonoBehaviour
 
 	public void ManagerKillEnemy(GameObject deadEnemy)
 	{
-		activeEnemyList.Remove(deadEnemy);
+        Debug.Log("hello");
+	    activeEnemyList.Remove(deadEnemy);
 		deadEnemy.SetActive(false);
 		if (activeEnemyList.Count == 0)
 			StartCoroutine(ManagerResetAllEnemies());
@@ -47,4 +58,14 @@ public class GameManager : MonoBehaviour
 			enemy.SetActive(true);
 		}
 	}
+
+    // laser functions
+
+    public void ManagerKillLaser(GameObject deadLaser)
+    {
+        if (deadLaser.CompareTag("Laser"))
+            Destroy(deadLaser);
+        else
+            Debug.LogWarning("You're trying to LASER KILL something that isn't a laser, dummy.", deadLaser);
+    }
 }
