@@ -8,10 +8,15 @@ public class GameManager : MonoBehaviour
 	// (as to not accidentally set it somewhere else like a doofus)
 	public static GameManager managerInstance { get; private set; }
 
+	// game manager variables
 	public GameObject[] enemyArray;
 	public List<GameObject> activeEnemyList;
 
     private GameObject player;
+
+	// gameplay variables
+	[Header("Gameplay Variables")]
+	[SerializeField] private float enemyRespawnTime;
 
 	private void Awake()
 	{
@@ -28,7 +33,12 @@ public class GameManager : MonoBehaviour
     // player functions
     public void ManagerKillPlayer()
     {
-        Destroy(player);
+		player.GetComponent<PolygonCollider2D>().enabled = false;
+		GameObject playerSpaceShip = player.transform.GetChild(1).gameObject; // gets the 2nd child of the player gameObject
+		ParticleSystem playerExplosion = player.transform.GetChild(2).GetComponent<ParticleSystem>(); // gets the 3rd child of the player gameObject
+		
+		playerSpaceShip.SetActive(false);
+		playerExplosion.Play();
     }
 
     // enemies functions
@@ -41,7 +51,6 @@ public class GameManager : MonoBehaviour
 
 	public void ManagerKillEnemy(GameObject deadEnemy)
 	{
-        Debug.Log("hello");
 	    activeEnemyList.Remove(deadEnemy);
 		deadEnemy.SetActive(false);
 		if (activeEnemyList.Count == 0)
@@ -50,7 +59,7 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator ManagerResetAllEnemies()
 	{
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(enemyRespawnTime);
 		foreach (GameObject enemy in enemyArray)
 		{
 			enemy.GetComponent<EnemyScript>().RespawnEnemy();
