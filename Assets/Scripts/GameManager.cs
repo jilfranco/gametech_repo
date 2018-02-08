@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 	// make the global instance of the Game Manager, make it public to get, private to set 
 	// (as to not accidentally set it somewhere else like a doofus)
-	public static GameManager managerInstance { get; private set; }
+	public static GameManager gameManagerInstance { get; private set; }
 
 	// game manager variables
 	public GameObject[] enemyArray;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
-		managerInstance = this;
+		gameManagerInstance = this;
         player = GameObject.Find("Player");
 	}
 	
@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 		
 		playerSpaceShip.SetActive(false);
 		playerExplosion.Play();
+		StartCoroutine(SlowTime(1.25f));
     }
 
     // enemies functions
@@ -77,4 +78,20 @@ public class GameManager : MonoBehaviour
         else
             Debug.LogWarning("You're trying to LASER KILL something that isn't a laser, dummy.", deadLaser);
     }
+
+	// time slow down funtion
+
+	private IEnumerator SlowTime(float lengthOfSlowdown)
+	{
+		float currentTime = 0.0f;
+		while (currentTime < lengthOfSlowdown)
+		{
+			float percent = Mathf.Sqrt(currentTime / lengthOfSlowdown);
+			Time.timeScale = Mathf.Lerp(1.0f, 0.0f, percent);
+			currentTime += Time.unscaledDeltaTime;
+			yield return new WaitForEndOfFrame();
+		}
+
+		Time.timeScale = 0.0f;
+	}
 }

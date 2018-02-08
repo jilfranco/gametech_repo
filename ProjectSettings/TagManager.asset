@@ -44,8 +44,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
+  - name: Moon
     uniqueID: 688104093
+    locked: 0
+  - name: Clouds
+    uniqueID: 2342343955
+    locked: 0
+  - name: Buildings
+    uniqueID: 2934189315
+    locked: 0
+  - name: Dim
+    uniqueID: 3627662087
     locked: 0
   - name: Enemies
     uniqueID: 2596108389
@@ -55,4 +64,7 @@ TagManager:
     locked: 0
   - name: Laser
     uniqueID: 1128711013
+    locked: 0
+  - name: TheCheapestColorEffect
+    uniqueID: 1704446477
     locked: 0

@@ -23,15 +23,15 @@ public class EnemyScript : MonoBehaviour
 	{
 	    if (collisionEvent.gameObject.CompareTag("Laser"))
 	    {
-			GameManager.managerInstance.ManagerKillLaser(collisionEvent.gameObject);
-			GameManager.managerInstance.ManagerKillEnemy(gameObject);
+			GameManager.gameManagerInstance.ManagerKillLaser(collisionEvent.gameObject);
+			GameManager.gameManagerInstance.ManagerKillEnemy(gameObject);
 	    }
 
 		else if (collisionEvent.gameObject.CompareTag("Player"))
-            GameManager.managerInstance.ManagerKillPlayer();
+            GameManager.gameManagerInstance.ManagerKillPlayer();
 
 		else if (collisionEvent.gameObject.CompareTag("EnemyKillCollision"))
-			GameManager.managerInstance.ManagerKillEnemy(gameObject);
+			GameManager.gameManagerInstance.ManagerKillEnemy(gameObject);
 	}
 
 	public void RespawnEnemy()
