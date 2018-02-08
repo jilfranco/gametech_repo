@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 	// game manager variables
 	public GameObject[] enemyArray;
 	public List<GameObject> activeEnemyList;
+	public int enemiesKilled;
+	public int enemiesMissed;
 
     private GameObject player;
 
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
     public void ManagerKillPlayer()
     {
 		player.GetComponent<PolygonCollider2D>().enabled = false;
+
 		GameObject playerSpaceShip = player.transform.GetChild(1).gameObject; // gets the 2nd child of the player gameObject
 		ParticleSystem playerExplosion = player.transform.GetChild(2).GetComponent<ParticleSystem>(); // gets the 3rd child of the player gameObject
 		
@@ -67,6 +70,16 @@ public class GameManager : MonoBehaviour
 			activeEnemyList.Add(enemy);
 			enemy.SetActive(true);
 		}
+	}
+
+	private void EnemiesKilledCounter()
+	{
+		enemiesKilled += 1;
+	}
+
+	private void EnemiesMissedCounter()
+	{
+		enemiesMissed += 1;
 	}
 
     // laser functions

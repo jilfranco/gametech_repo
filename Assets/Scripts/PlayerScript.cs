@@ -24,6 +24,7 @@ public class PlayerScript : MonoBehaviour
 
 	private void Update()
 	{
+		
 		CheckInput();
 		MovePlayer();
 	}
