@@ -26,7 +26,7 @@ public class EnemyScript : MonoBehaviour
 	    {
 			GameManager.gameManagerInstance.ManagerKillLaser(collisionEvent.gameObject);
 			GameManager.gameManagerInstance.ManagerKillEnemy(gameObject);
-            GameManager.gameManagerInstance.EnemiesKilledCounter();
+            GameManager.gameManagerInstance.ManagerEnemiesKilledCounter();
 	    }
 
 		else if (collisionEvent.gameObject.CompareTag("Player"))
@@ -35,7 +35,7 @@ public class EnemyScript : MonoBehaviour
 		else if (collisionEvent.gameObject.CompareTag("EnemyKillCollision"))
 	    {
 			GameManager.gameManagerInstance.ManagerKillEnemy(gameObject);
-	        GameManager.gameManagerInstance.EnemiesMissedCounter();
+	        GameManager.gameManagerInstance.ManagerEnemiesMissedCounter();
 	    }
 	}
 

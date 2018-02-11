@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -875,6 +875,7 @@ GameObject:
   - component: {fileID: 105337748}
   - component: {fileID: 105337747}
   - component: {fileID: 105337746}
+  - component: {fileID: 105337750}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -960,6 +961,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &105337750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 105337745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60440a16dbfed34aadcc4126b120bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceBar: {fileID: 859278532}
+  healthBar: {fileID: 194456437}
 --- !u!1001 &110556772
 Prefab:
   m_ObjectHideFlags: 0
@@ -1689,20 +1703,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -4288,7 +4288,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4035195412935590, guid: 19e89ceb02b4f37498dc4a214c97acb2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.26
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4035195412935590, guid: 19e89ceb02b4f37498dc4a214c97acb2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7707,11 +7707,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf770814da70a34cb9532705dfa00fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyRespawnTime: 0.5
   enemyArray: []
   activeEnemyList: []
   enemiesKilled: 0
   enemiesMissed: 0
-  enemyRespawnTime: 0.5
 --- !u!4 &1438426834
 Transform:
   m_ObjectHideFlags: 0
