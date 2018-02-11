@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
 	//player variables
+    [SerializeField] private float playerHealth;
 	private Rigidbody2D playerRb2D;
 
 	// move variables
+	[SerializeField] private float ySpeed;
+	[SerializeField] private float xSpeed;
 	private float xMove;
 	private float yMove;
-	[SerializeField] private float xSpeed;
-	[SerializeField] private float ySpeed;
 
 	// laser variables
 	[SerializeField] private GameObject laserPrefab;
@@ -59,7 +60,7 @@ public class PlayerScript : MonoBehaviour
 		Vector2 minBounds = Camera.main.ViewportToWorldPoint(Vector2.zero);
 		Vector2 maxBounds = Camera.main.ViewportToWorldPoint(Vector2.one);
 
-		Vector2 playerSize = new Vector2(0.68f, 0.49f);
+		Vector2 playerSize = new Vector2(0.85f, 0.49f);
 		minBounds = minBounds + playerSize;
 		maxBounds = maxBounds - playerSize;
 

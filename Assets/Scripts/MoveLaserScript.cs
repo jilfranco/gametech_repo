@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MoveLaserScript : MonoBehaviour
 {
-	private float laserLifeLength = 1f;
+	// laser longevity variables
+    private float laserLifeLength = 1f;
 	private float laserLifeCurrent = 0f;
 
 	private void Start()

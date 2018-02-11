@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class MoveBackgroundScript : MonoBehaviour
 {
-	[SerializeField] private GameObject clouds;
+	// moon and cloud game objects
+    [SerializeField] private GameObject clouds;
 	[SerializeField] private GameObject moon;
+	private Rigidbody2D cloudsRB2D;
+	private Rigidbody2D moonRB2D;
+
+    // speed and move amount variables
 	[SerializeField] private float xMoveAmountClouds;
 	[SerializeField] private float yMoveAmountClouds;
 	[SerializeField] private float xMoveAmountMoon;
 	[SerializeField] private float yMoveAmountMoon;
 	[SerializeField] private float ySpeedClouds;
 	[SerializeField] private float ySpeedMoon;
-
-	private Rigidbody2D cloudsRB2D;
-	private Rigidbody2D moonRB2D;
 	private float xMoveClouds;
 	private float yMoveClouds;
 	private float xMoveMoon;

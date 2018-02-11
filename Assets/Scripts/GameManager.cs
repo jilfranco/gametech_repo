@@ -33,6 +33,12 @@ public class GameManager : MonoBehaviour
 	}
 
     // player functions
+
+    public void PlayerHealth()
+    {
+        
+    }
+
     public void ManagerKillPlayer()
     {
 		player.GetComponent<PolygonCollider2D>().enabled = false;
@@ -72,14 +78,16 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	private void EnemiesKilledCounter()
+	public void EnemiesKilledCounter()
 	{
 		enemiesKilled += 1;
+        Debug.Log(string.Format("Enemies Killed: {0}", enemiesKilled));
 	}
 
-	private void EnemiesMissedCounter()
+	public void EnemiesMissedCounter()
 	{
 		enemiesMissed += 1;
+	    Debug.Log(string.Format("Enemies Missed: {0}", enemiesMissed));
 	}
 
     // laser functions

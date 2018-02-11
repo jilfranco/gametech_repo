@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    // move speed variables
     [SerializeField] private float enemyMoveSpeedMin;
     [SerializeField] private float enemyMoveSpeedMax;
 	
@@ -25,13 +26,17 @@ public class EnemyScript : MonoBehaviour
 	    {
 			GameManager.gameManagerInstance.ManagerKillLaser(collisionEvent.gameObject);
 			GameManager.gameManagerInstance.ManagerKillEnemy(gameObject);
+            GameManager.gameManagerInstance.EnemiesKilledCounter();
 	    }
 
 		else if (collisionEvent.gameObject.CompareTag("Player"))
             GameManager.gameManagerInstance.ManagerKillPlayer();
 
 		else if (collisionEvent.gameObject.CompareTag("EnemyKillCollision"))
+	    {
 			GameManager.gameManagerInstance.ManagerKillEnemy(gameObject);
+	        GameManager.gameManagerInstance.EnemiesMissedCounter();
+	    }
 	}
 
 	public void RespawnEnemy()
