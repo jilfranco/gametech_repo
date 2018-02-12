@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     }
 
     // player functions
-	public void ManagerMinusPlayerHealth()
+    public void ManagerMinusPlayerHealth()
     {
         managerCurrentHealth -= 1;
         if (managerCurrentHealth <= 0)
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     public void ManagerKillPlayer()
     {
         managerCurrentHealth = 0;
-        
+
         player.GetComponent<PolygonCollider2D>().enabled = false;
 
         GameObject playerSpaceShip = player.transform.GetChild(1).gameObject; // gets the 2nd child of the player gameObject
@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
 
         playerSpaceShip.SetActive(false);
         playerExplosion.Play();
+
         StartCoroutine(ManagerSlowTime(1.25f));
     }
 
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour
     }
 
     // laser functions
-	public void ManagerKillLaser(GameObject deadLaser)
+    public void ManagerKillLaser(GameObject deadLaser)
     {
         if (deadLaser.CompareTag("Laser"))
             Destroy(deadLaser);
@@ -110,26 +111,20 @@ public class GameManager : MonoBehaviour
     }
 
     // time slow down funtion
-	private IEnumerator ManagerSlowTime(float lengthOfSlowdown)
+    private IEnumerator ManagerSlowTime(float lengthOfSlowdown)
     {
+        managerCurrentHealth = -1;
         Image levelEndFade = GameObject.Find("LevelEndFade").GetComponent<Image>();
-		Color opaque = new Color(16/255.0f, 2/255.0f, 21/255.0f, 255/255.0f);
-		float currentTime = 0.0f;
+        Color opaque = new Color(16 / 255.0f, 2 / 255.0f, 21 / 255.0f, 255 / 255.0f);
+        float currentTime = 0.0f;
         while (currentTime < lengthOfSlowdown)
         {
             float percent = Mathf.Sqrt(currentTime / lengthOfSlowdown);
             Time.timeScale = Mathf.Lerp(1.0f, 0.0f, percent);
-			levelEndFade.color = Color.Lerp(Color.clear, opaque, percent);
+            levelEndFade.color = Color.Lerp(Color.clear, opaque, percent);
             currentTime += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
         Time.timeScale = 0.0f;
-		levelEndUI();
     }
-
-	// ui functions
-	private void levelEndUI()
-	{
-
-	}
 }

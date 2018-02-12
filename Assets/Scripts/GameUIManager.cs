@@ -6,14 +6,15 @@ using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
-    [SerializeField] private Image distanceBar;
-    [SerializeField] private Image healthBar;
-    //private float hbFillAmount;
-    //private float dbFillAmount;
+    [SerializeField] private Image distanceBarUI;
+    [SerializeField] private Image healthBarUI;
+    [SerializeField] private GameObject levelEndUI;
+    [SerializeField] private GameObject enemiesKilledNumberUI;
+    [SerializeField] private GameObject enemiesMissedNumberUI;
 
     void Awake()
     {
-        healthBar.fillAmount = 1;
+        healthBarUI.fillAmount = 1;
     }
 
     void Update()
@@ -25,12 +26,26 @@ public class GameUIManager : MonoBehaviour
     {
         int maxHealth = GameManager.gameManagerInstance.managerMaxHealth;
         int currentHealth = GameManager.gameManagerInstance.managerCurrentHealth;
+        
 
         if (currentHealth == maxHealth - 1)
-            healthBar.fillAmount = currentHealth / maxHealth;
+            healthBarUI.fillAmount = currentHealth / maxHealth;
         else if (currentHealth == maxHealth - 2)
-            healthBar.fillAmount = healthBar.fillAmount = currentHealth / maxHealth;
+            healthBarUI.fillAmount = healthBarUI.fillAmount = currentHealth / maxHealth;
         else if (currentHealth == 0)
-            healthBar.fillAmount = healthBar.fillAmount = 0;
+        {
+            healthBarUI.fillAmount = healthBarUI.fillAmount = 0;
+            StartCoroutine(EndUIText());
+
+        }
+    }
+
+    private IEnumerator EndUIText()
+    {
+        Debug.Log("hello i am your end level ui nums");
+        enemiesKilledNumberUI.GetComponent<Text>().text = GameManager.gameManagerInstance.enemiesKilled.ToString("##");
+        enemiesMissedNumberUI.GetComponent<Text>().text = GameManager.gameManagerInstance.enemiesMissed.ToString("##");
+        yield return new WaitForSecondsRealtime(1.5f);
+        levelEndUI.SetActive(true);
     }
 }
