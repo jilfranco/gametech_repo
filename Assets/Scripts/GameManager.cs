@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,7 +21,6 @@ public class GameManager : MonoBehaviour
     public int enemiesMissed;
 
     // player game manager variables
-
     private GameObject player;
     public int managerCurrentHealth { get; private set; }
     public int managerMaxHealth { get; private set; }
@@ -40,8 +40,7 @@ public class GameManager : MonoBehaviour
     }
 
     // player functions
-
-    public void ManagerMinusPlayerHealth()
+	public void ManagerMinusPlayerHealth()
     {
         managerCurrentHealth -= 1;
         if (managerCurrentHealth <= 0)
@@ -102,8 +101,7 @@ public class GameManager : MonoBehaviour
     }
 
     // laser functions
-
-    public void ManagerKillLaser(GameObject deadLaser)
+	public void ManagerKillLaser(GameObject deadLaser)
     {
         if (deadLaser.CompareTag("Laser"))
             Destroy(deadLaser);
@@ -112,18 +110,26 @@ public class GameManager : MonoBehaviour
     }
 
     // time slow down funtion
-
-    private IEnumerator ManagerSlowTime(float lengthOfSlowdown)
+	private IEnumerator ManagerSlowTime(float lengthOfSlowdown)
     {
-        float currentTime = 0.0f;
+        Image levelEndFade = GameObject.Find("LevelEndFade").GetComponent<Image>();
+		Color opaque = new Color(16/255.0f, 2/255.0f, 21/255.0f, 255/255.0f);
+		float currentTime = 0.0f;
         while (currentTime < lengthOfSlowdown)
         {
             float percent = Mathf.Sqrt(currentTime / lengthOfSlowdown);
             Time.timeScale = Mathf.Lerp(1.0f, 0.0f, percent);
+			levelEndFade.color = Color.Lerp(Color.clear, opaque, percent);
             currentTime += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
-
         Time.timeScale = 0.0f;
+		levelEndUI();
     }
+
+	// ui functions
+	private void levelEndUI()
+	{
+
+	}
 }
