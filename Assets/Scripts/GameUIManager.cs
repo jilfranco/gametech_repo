@@ -11,6 +11,10 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private GameObject levelEndUI;
     [SerializeField] private GameObject enemiesKilledNumberUI;
     [SerializeField] private GameObject enemiesMissedNumberUI;
+    [SerializeField] private GameObject distanceNumberUI;
+
+	private bool didEndScreenAlready;
+	private float distance;
 
     void Awake()
     {
@@ -19,32 +23,35 @@ public class GameUIManager : MonoBehaviour
 
     void Update()
     {
-        CheckHealth();
+        distance = Time.timeSinceLevelLoad;
+		CheckHealth();
+		FillDistanceBar();
     }
 
-    private void CheckHealth()
+	private void FillDistanceBar()
+	{
+		distanceBarUI.fillAmount = distance/100;
+	}
+
+	private void CheckHealth()
     {
         int maxHealth = GameManager.gameManagerInstance.managerMaxHealth;
         int currentHealth = GameManager.gameManagerInstance.managerCurrentHealth;
-        
+		
+		healthBarUI.fillAmount = (float)currentHealth/maxHealth;
 
-        if (currentHealth == maxHealth - 1)
-            healthBarUI.fillAmount = currentHealth / maxHealth;
-        else if (currentHealth == maxHealth - 2)
-            healthBarUI.fillAmount = healthBarUI.fillAmount = currentHealth / maxHealth;
-        else if (currentHealth == 0)
-        {
-            healthBarUI.fillAmount = healthBarUI.fillAmount = 0;
-            StartCoroutine(EndUIText());
-
-        }
+		if (!didEndScreenAlready && currentHealth <= 0)
+		{
+			didEndScreenAlready = true;
+			StartCoroutine(EndUIText());
+		}
     }
 
     private IEnumerator EndUIText()
     {
-        Debug.Log("hello i am your end level ui nums");
         enemiesKilledNumberUI.GetComponent<Text>().text = GameManager.gameManagerInstance.enemiesKilled.ToString("##");
         enemiesMissedNumberUI.GetComponent<Text>().text = GameManager.gameManagerInstance.enemiesMissed.ToString("##");
+		distanceNumberUI.GetComponent<Text>().text = distance.ToString("##");
         yield return new WaitForSecondsRealtime(1.5f);
         levelEndUI.SetActive(true);
     }

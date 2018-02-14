@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     // enemy game manager variables
     public GameObject[] enemyArray;
     public List<GameObject> activeEnemyList;
-    public int enemiesKilled;
-    public int enemiesMissed;
+    public int enemiesKilled = 0;
+    public int enemiesMissed = 0;
 
     // player game manager variables
     private GameObject player;
