@@ -619,6 +619,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMoveSpeedMin: 2
   enemyMoveSpeedMax: 4
+  enemyExplosionPrefab: {fileID: 198779671896094796, guid: 2ea78a326d88cca44911081de00ce774,
+    type: 2}
 --- !u!212 &212020275052809066
 SpriteRenderer:
   m_ObjectHideFlags: 1

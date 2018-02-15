@@ -127,4 +127,10 @@ public class GameManager : MonoBehaviour
         }
         Time.timeScale = 0.0f;
     }
+
+	public IEnumerator DestroyParticleSystem(ParticleSystem s)
+	{
+		yield return new WaitForSeconds(s.main.duration);
+		Destroy(s.gameObject);
+	}
 }

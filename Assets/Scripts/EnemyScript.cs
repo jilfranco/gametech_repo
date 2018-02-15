@@ -7,6 +7,7 @@ public class EnemyScript : MonoBehaviour
     // move speed variables
     [SerializeField] private float enemyMoveSpeedMin;
     [SerializeField] private float enemyMoveSpeedMax;
+    [SerializeField] private ParticleSystem enemyExplosionPrefab;
 	
 	private void Start()
     {
@@ -27,12 +28,16 @@ public class EnemyScript : MonoBehaviour
 			GameManager.gameManagerInstance.ManagerKillLaser(collisionEvent.gameObject);
 			GameManager.gameManagerInstance.ManagerKillEnemy(gameObject);
             GameManager.gameManagerInstance.ManagerEnemiesKilledCounter();
+		    ParticleSystem deathParticles = Instantiate(enemyExplosionPrefab, transform.position, transform.rotation);
+		    GameManager.gameManagerInstance.StartCoroutine(GameManager.gameManagerInstance.DestroyParticleSystem(deathParticles));
 	    }
 
 		else if (collisionEvent.gameObject.CompareTag("Player"))
 	    {
             GameManager.gameManagerInstance.ManagerMinusPlayerHealth();
 		    GameManager.gameManagerInstance.ManagerKillEnemy(gameObject);
+		    ParticleSystem deathParticles = Instantiate(enemyExplosionPrefab, transform.position, transform.rotation);
+		    GameManager.gameManagerInstance.StartCoroutine(GameManager.gameManagerInstance.DestroyParticleSystem(deathParticles));
 	    }
 
 		else if (collisionEvent.gameObject.CompareTag("EnemyKillCollision"))
@@ -45,6 +50,7 @@ public class EnemyScript : MonoBehaviour
 	public void RespawnEnemy()
 	{
 		gameObject.SetActive(true);
+		gameObject.transform.GetChild(0).gameObject.SetActive(true);
 
 		Vector2 enemySpawnBoundsMin = Camera.main.ViewportToWorldPoint(Vector2.zero);
 		Vector2 enemySpawnBoundsMax = Camera.main.ViewportToWorldPoint(Vector2.one);

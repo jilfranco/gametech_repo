@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class GameUIManager : MonoBehaviour
 {
-    [SerializeField] private Image distanceBarUI;
     [SerializeField] private Image healthBarUI;
     [SerializeField] private GameObject levelEndUI;
     [SerializeField] private GameObject enemiesKilledNumberUI;
@@ -35,13 +34,7 @@ public class GameUIManager : MonoBehaviour
     {
         distance = Time.timeSinceLevelLoad;
 		CheckHealth();
-		FillDistanceBar();
     }
-
-	private void FillDistanceBar()
-	{
-		distanceBarUI.fillAmount = distance/100;
-	}
 
 	private void CheckHealth()
     {
@@ -72,10 +65,12 @@ public class GameUIManager : MonoBehaviour
 	public void ResartButtonClicked()
 	{
 		SceneManager.LoadScene("GameScene");
+		Time.timeScale = 1;
 	}
 
 	public void MenuButtonClicked()
 	{
 		SceneManager.LoadScene("MenuScene");
+		Time.timeScale = 1;
 	}
 }

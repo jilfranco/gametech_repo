@@ -65,7 +65,7 @@ public class PlayerScript : MonoBehaviour
 		maxBounds = maxBounds - playerSize;
 
 		float newXPosition = Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x);
-		float newYPosition = Mathf.Clamp(transform.position.y, minBounds.y, minBounds.y + 2); // +2 is the up limit
+		float newYPosition = Mathf.Clamp(transform.position.y, minBounds.y + 0.2f, minBounds.y + 2); // +2 is the up limit
 
 		transform.position = new Vector3(newXPosition, newYPosition, transform.position.z);
 	}
