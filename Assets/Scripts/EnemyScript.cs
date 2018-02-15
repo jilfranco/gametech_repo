@@ -30,7 +30,10 @@ public class EnemyScript : MonoBehaviour
 	    }
 
 		else if (collisionEvent.gameObject.CompareTag("Player"))
-            GameManager.gameManagerInstance.ManagerKillPlayer();
+	    {
+            GameManager.gameManagerInstance.ManagerMinusPlayerHealth();
+		    GameManager.gameManagerInstance.ManagerKillEnemy(gameObject);
+	    }
 
 		else if (collisionEvent.gameObject.CompareTag("EnemyKillCollision"))
 	    {

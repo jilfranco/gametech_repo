@@ -14,17 +14,17 @@ public class MenuManager : MonoBehaviour
 
 	void Start()
 	{
-		startButton.onClick.AddListener(startButtonClicked);
-		startButton.onClick.AddListener(quitButtonClicked);
+		startButton.onClick.AddListener(StartButtonClicked);
+		quitButton.onClick.AddListener(QuitButtonClicked);
 		startButton.Select();
 	}
 
-	private void startButtonClicked()
+	private void StartButtonClicked()
 	{
 		SceneManager.LoadScene("GameScene");
 	}
 
-	private void quitButtonClicked()
+	private void QuitButtonClicked()
 	{
 		Application.Quit();
 	}
