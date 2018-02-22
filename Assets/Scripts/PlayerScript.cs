@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-	void Start()
+	private void Start()
 	{
 
 	}
 
-	void Update()
+	private void Update()
 	{
 
 	}
