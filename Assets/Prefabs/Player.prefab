@@ -157,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530293757283504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.021, y: -0.528, z: 0}
+  m_LocalPosition: {x: 0.021, y: -0.511, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4657112535454418}
@@ -202,14 +202,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!60 &60443885638662980
 PolygonCollider2D:
@@ -275,7 +275,7 @@ MonoBehaviour:
   groundCheck: {fileID: 4531827454567906}
   rb: {fileID: 50902055167463640}
   onGround: 0
-  jumpForce: 400
+  jumpForce: 1300
 --- !u!212 &212765353663978564
 SpriteRenderer:
   m_ObjectHideFlags: 1
