@@ -6,11 +6,13 @@ public class PlatformManager : MonoBehaviour
 {
     public static PlatformManager PlatformManagerInstance;
     public List<GameObject> platformList;
-    public GameObject platformCollider;
+    //public GameObject platformCollider;
+
 
     private void Awake()
     {
         PlatformManagerInstance = this;
+
     }
 
     void Start()
@@ -38,10 +40,10 @@ public class PlatformManager : MonoBehaviour
             platform.transform.localPosition = platformPosition;
         }
 
-        SetCollider();
+        //SetCollider();
     }
 
-    private void MovePlatform(GameObject platform)
+    public void MovePlatform(GameObject platform)
     {
         Vector2 platformPosition = Vector2.zero;
         GameObject previousPlatform = platformList[platformList.Count - 1];
@@ -55,15 +57,30 @@ public class PlatformManager : MonoBehaviour
         platformPosition.x = newXPos;
 
         platform.transform.localPosition = platformPosition;
+
+        platformList.RemoveAt(0);
+        platformList.Add(platform);
     }
 
+    /*
     private void SetCollider()
     {
-        float colliderSize = 0f;
+        float size = 0f;
         for (int i = 0; i < platformList.Count; i++)
         {
             GameObject platform = platformList[i];
-            colliderSize += platform.GetComponent<Collider2D>().bounds.size.x;
+            size += platform.GetComponent<Collider2D>().bounds.size.x;
         }
+
+        Vector2 colliderSize = new Vector2(size, 1);
+        Vector2 colliderCenter = new Vector2(size / 2, 1);
+
+        platformCollider.GetComponent<BoxCollider2D>().size = colliderSize;
+        platformCollider.GetComponent<BoxCollider2D>().offset = colliderCenter;
+
+        Vector2 firstPlatformPosition = platformList[0].transform.position;
+        firstPlatformPosition.x -= platformList[0].GetComponent<Collider2D>().bounds.size.x / 2;
+        platformCollider.transform.position = firstPlatformPosition;
     }
+    */
 }

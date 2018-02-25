@@ -20,7 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4103869689410238}
   - component: {fileID: 50062175628936860}
-  m_Layer: 0
+  - component: {fileID: 114838688512255178}
+  - component: {fileID: 61404404671574786}
+  m_Layer: 8
   m_Name: Platform_01
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -36,8 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4829678995387086}
   - component: {fileID: 212612232773286174}
-  - component: {fileID: 61931129305284716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlatformPiece
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -53,7 +54,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4323250221647080}
   - component: {fileID: 212390409386345792}
-  - component: {fileID: 61320533789010212}
   m_Layer: 8
   m_Name: PlatformTop
   m_TagString: Platform
@@ -70,8 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4028733455595968}
   - component: {fileID: 212293064613468810}
-  - component: {fileID: 61444518070530098}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlatformPiece
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -98,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1154827001462998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.21, y: -2.01, z: 0}
+  m_LocalPosition: {x: -5.87, y: -2.3531957, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4323250221647080}
@@ -153,81 +152,46 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!61 &61320533789010212
+--- !u!61 &61404404671574786
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1498977775892208}
+  m_GameObject: {fileID: 1154827001462998}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.14023149, y: -0.38379383}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.789889, y: 3.2141972}
   m_EdgeRadius: 0
---- !u!61 &61444518070530098
-BoxCollider2D:
+--- !u!114 &114838688512255178
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1706354416561592}
+  m_GameObject: {fileID: 1154827001462998}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!61 &61931129305284716
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1477354051891608}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a791034935cace34b8e38b6ae0a66a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformTypes:
+  - {fileID: 1154827001462998}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &212293064613468810
 SpriteRenderer:
   m_ObjectHideFlags: 1
