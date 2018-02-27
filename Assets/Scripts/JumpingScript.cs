@@ -6,7 +6,7 @@ public class JumpingScript : MonoBehaviour {
 
 	public LayerMask ground;
 	public Transform groundCheck;
-	public Rigidbody2D rb;
+	public Rigidbody2D playerRigidBody;
 	public bool onGround;
 	public float jumpForce;
 
@@ -14,7 +14,7 @@ public class JumpingScript : MonoBehaviour {
 
 	private void Start()
 	{
-		rb = GetComponent<Rigidbody2D>();
+		playerRigidBody = GetComponent<Rigidbody2D>();
 	}
 
 	private void Update()
@@ -43,14 +43,14 @@ public class JumpingScript : MonoBehaviour {
 	private void Jump()
 	{
 		shouldJump = false;
-		rb.AddForce(Vector2.up * jumpForce);
+		playerRigidBody.AddForce(Vector2.up * jumpForce);
 	}
 
 	private void CheckGround()
 	{
-		Collider2D col = Physics2D.OverlapCircle(groundCheck.position, 0.1f, ground);
+		Collider2D playerCollider = Physics2D.OverlapCircle(groundCheck.position, 0.1f, ground);
 
-		if (col == null)
+		if (playerCollider == null)
 			onGround = false;
 		else
 			onGround = true;

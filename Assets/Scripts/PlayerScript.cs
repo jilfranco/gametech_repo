@@ -7,7 +7,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float speedMultiplier;
     [SerializeField] private float maxVelocity;
     private Rigidbody2D playerRB;
-    private Vector2 currentVelocity;
 
     private void Awake()
     {
@@ -22,12 +21,11 @@ public class PlayerScript : MonoBehaviour
     private void MoveForward()
     {
         playerRB.AddForce(Vector2.right * speedMultiplier);
-        currentVelocity = playerRB.velocity;
 
-        if (currentVelocity.x < maxVelocity)
+        if (playerRB.velocity.x < maxVelocity)
         {
-            currentVelocity = new Vector2(maxVelocity, 0);
-            playerRB.velocity = currentVelocity;
+            playerRB.velocity = new Vector2(maxVelocity, playerRB.velocity.y);
         }
     }
+
 }

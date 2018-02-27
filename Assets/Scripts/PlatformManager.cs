@@ -6,13 +6,14 @@ public class PlatformManager : MonoBehaviour
 {
     public static PlatformManager PlatformManagerInstance;
     public List<GameObject> platformList;
-    //public GameObject platformCollider;
+
+    [SerializeField] private float platformSpacingLow;
+    [SerializeField] private float platformSpacingHigh;
 
 
     private void Awake()
     {
         PlatformManagerInstance = this;
-
     }
 
     void Start()
@@ -33,14 +34,13 @@ public class PlatformManager : MonoBehaviour
                 float previousPlatformXPos = previousPlatform.transform.localPosition.x;
                 float previousPlatformWidth = previousPlatform.GetComponent<Collider2D>().bounds.size.x / 2;
 
-                float newXPos = previousPlatformXPos + previousPlatformWidth;
-                platformPosition.x = newXPos;
+                float newPlatformWidth = platform.GetComponent<Collider2D>().bounds.size.x / 2;   
+                float newPlatformXPos = previousPlatformXPos + previousPlatformWidth + newPlatformWidth;   
+                platformPosition.x = newPlatformXPos + Random.Range(platformSpacingLow, platformSpacingHigh);
             }
 
             platform.transform.localPosition = platformPosition;
         }
-
-        //SetCollider();
     }
 
     public void MovePlatform(GameObject platform)
@@ -53,34 +53,14 @@ public class PlatformManager : MonoBehaviour
 
         platform.GetComponent<PlatformScript>().InitializePlatformTypes();
 
-        float newXPos = previousPlatformXPos + previousPlatformWidth;
-        platformPosition.x = newXPos;
+        float newPlatformWidth = platform.GetComponent<Collider2D>().bounds.size.x / 2;
+        float newPlatformXPos = previousPlatformXPos + previousPlatformWidth + newPlatformWidth;
+        platformPosition.x = newPlatformXPos + Random.Range(platformSpacingLow, platformSpacingHigh);
 
         platform.transform.localPosition = platformPosition;
 
         platformList.RemoveAt(0);
         platformList.Add(platform);
+        
     }
-
-    /*
-    private void SetCollider()
-    {
-        float size = 0f;
-        for (int i = 0; i < platformList.Count; i++)
-        {
-            GameObject platform = platformList[i];
-            size += platform.GetComponent<Collider2D>().bounds.size.x;
-        }
-
-        Vector2 colliderSize = new Vector2(size, 1);
-        Vector2 colliderCenter = new Vector2(size / 2, 1);
-
-        platformCollider.GetComponent<BoxCollider2D>().size = colliderSize;
-        platformCollider.GetComponent<BoxCollider2D>().offset = colliderCenter;
-
-        Vector2 firstPlatformPosition = platformList[0].transform.position;
-        firstPlatformPosition.x -= platformList[0].GetComponent<Collider2D>().bounds.size.x / 2;
-        platformCollider.transform.position = firstPlatformPosition;
-    }
-    */
 }

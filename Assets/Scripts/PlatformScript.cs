@@ -18,7 +18,7 @@ public class PlatformScript : MonoBehaviour
 
     private void RandomPlatformType()
     {
-        int randomNumber = UnityEngine.Random.Range(0, platformTypes.Length);
+        int randomNumber = Random.Range(0, platformTypes.Length);
         GameObject platformType = platformTypes[randomNumber];
     }
 }
