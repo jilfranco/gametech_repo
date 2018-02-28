@@ -22,7 +22,7 @@ public class PlayerScript : MonoBehaviour
     {
         playerRB.AddForce(Vector2.right * speedMultiplier);
 
-        if (playerRB.velocity.x < maxVelocity)
+        if (playerRB.velocity.x > maxVelocity)
         {
             playerRB.velocity = new Vector2(maxVelocity, playerRB.velocity.y);
         }

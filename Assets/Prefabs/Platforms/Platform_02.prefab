@@ -97,8 +97,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1225238744006192}
   m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.70710784}
-  m_LocalPosition: {x: -2.33, y: -16.55, z: 0}
-  m_LocalScale: {x: 40.285824, y: 0.4049188, z: 1}
+  m_LocalPosition: {x: -2.33, y: -39.38, z: 0}
+  m_LocalScale: {x: 85.94894, y: 0.4049192, z: 1}
   m_Children: []
   m_Father: {fileID: 4672889359234974}
   m_RootOrder: 1
@@ -126,8 +126,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1859683573677790}
   m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.70710784}
-  m_LocalPosition: {x: 1.84, y: -16.55, z: 0}
-  m_LocalScale: {x: 40.285824, y: 0.4049188, z: 1}
+  m_LocalPosition: {x: 1.84, y: -39.38, z: 0}
+  m_LocalScale: {x: 85.94894, y: 0.4049192, z: 1}
   m_Children: []
   m_Father: {fileID: 4672889359234974}
   m_RootOrder: 2
@@ -164,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.22533476, y: -16.611765}
+  m_Offset: {x: -0.22533464, y: -39.06067}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -175,7 +175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.5210257, y: 40.42329}
+  m_Size: {x: 4.5210257, y: 85.321106}
   m_EdgeRadius: 0
 --- !u!114 &114240177422417510
 MonoBehaviour:
@@ -189,12 +189,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformTypes:
-  - {fileID: 1154827001462998, guid: b673a1681f96ceb478cfd4409e0cfa45, type: 2}
+  - {fileID: 0}
   - {fileID: 1561823833288542}
-  - {fileID: 1189736591442130, guid: ac2c1f9ccb3c05f46ad7fc319cdb0d28, type: 2}
-  - {fileID: 1097548250956566, guid: a3cc238174d4c5e408cb347d2c3caa29, type: 2}
-  - {fileID: 1722591645415174, guid: 0a783b2e534dcbd4aaec85c456dee124, type: 2}
-  - {fileID: 1207719970267860, guid: 525c8b191567ba948b4e03d44e494602, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &212194041018064328
 SpriteRenderer:
   m_ObjectHideFlags: 1

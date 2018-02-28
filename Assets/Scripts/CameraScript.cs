@@ -21,8 +21,7 @@ public class CameraScript : MonoBehaviour
 
 	private void MoveCamera()
 	{
-		Vector3 newPos = Vector3.Lerp(transform.position, target.position, Time.deltaTime * followSpeed);
-		newPos.z = zPos;
-		transform.position = newPos;
+	    Vector3 newPos = Vector3.Lerp(transform.position, target.position, Time.deltaTime * followSpeed);
+	    transform.position = new Vector3(newPos.x, 0, zPos);
 	}
 }
