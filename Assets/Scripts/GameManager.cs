@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class GameManager : MonoBehaviour
 
 	public void KillPlayer()
 	{
-		Collider2D playerCollider = player.GetComponent<Collider2D>();
-		playerCollider.enabled = false;
+		SceneManager.LoadScene("startMenu");
 	}
 }

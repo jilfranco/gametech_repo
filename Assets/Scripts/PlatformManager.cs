@@ -21,7 +21,7 @@ public class PlatformManager : MonoBehaviour
         InitializePlatforms();
     }
 
-    private void InitializePlatforms()
+    public void InitializePlatforms()
     {
         for (int i = 0; i < platformList.Count; i++)
         {
