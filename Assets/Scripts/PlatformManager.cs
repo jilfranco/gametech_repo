@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlatformManager : MonoBehaviour
 {
-    public static PlatformManager PlatformManagerInstance;
+    public static PlatformManager PlatformManagerInstance { get; private set; }
     public List<GameObject> platformList;
     public List<GameObject> activePlatformList;
 
