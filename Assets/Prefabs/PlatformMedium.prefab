@@ -36,6 +36,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4730976725228542}
   - component: {fileID: 60605430195102770}
+  - component: {fileID: 50010088638373932}
+  - component: {fileID: 114213337644171590}
   m_Layer: 8
   m_Name: PlatformMedium
   m_TagString: Platform
@@ -639,6 +641,26 @@ Transform:
   m_Father: {fileID: 4730976725228542}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50010088638373932
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045053441974204}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0.5
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!60 &60605430195102770
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -684,6 +706,18 @@ PolygonCollider2D:
       - {x: 1.7810252, y: -0.2506365}
       - {x: 2.0998116, y: 0.06594358}
       - {x: 2.108621, y: 0.29259777}
+--- !u!114 &114213337644171590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045053441974204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be2504ca4717f24f8d8e21319fb8ff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformFallDelay: 1
 --- !u!212 &212061777376038858
 SpriteRenderer:
   m_ObjectHideFlags: 1

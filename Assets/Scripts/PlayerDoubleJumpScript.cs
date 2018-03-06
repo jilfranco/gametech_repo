@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDoubleJumpScript : MonoBehaviour
 {
     [SerializeField] private float doubleJumpForce;
+    [SerializeField] private GameObject doubleJumpTrail;
 
     private PlayerJumpScript playerJumpScript;
 
@@ -41,6 +42,7 @@ public class PlayerDoubleJumpScript : MonoBehaviour
         if (playerJumpScript.grounded)
         {
             canDoubleJump = true;
+			doubleJumpTrail.SetActive(false);
         }
     }
 
@@ -57,5 +59,6 @@ public class PlayerDoubleJumpScript : MonoBehaviour
         canDoubleJump = false;
         shouldDoubleJump = false;
         playerJumpScript.playerRB.AddForce(Vector2.up * doubleJumpForce);
+		doubleJumpTrail.SetActive(true);
     }
 }
