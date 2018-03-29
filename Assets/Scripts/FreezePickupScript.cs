@@ -37,8 +37,8 @@ public class FreezePickupScript : MonoBehaviour
         Vector3 growSize = new Vector3(1.5f, 1.5f, 1);
         Vector3 shrinkSize = new Vector3(0, 0, 0);
         transform.localScale = Vector3.Lerp(ogSize, growSize, Time.deltaTime * scaleSpeed);
+        yield return new WaitForSeconds(3);
         transform.localScale = Vector3.Lerp(growSize, shrinkSize, Time.deltaTime * (scaleSpeed*5));
-        yield return new WaitForSeconds(5);
         scalePickup = false;
     }
 }
