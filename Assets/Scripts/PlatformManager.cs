@@ -8,6 +8,8 @@ public class PlatformManager : MonoBehaviour
 {
 	public static PlatformManager platformManagerInstance {get; private set;}
 
+	public List<GameObject> activePlatforms;
+	
 	[SerializeField] private List<GameObject> platformPrefabs;
 	[SerializeField] private float maxPlatformsNum;
 
@@ -21,10 +23,10 @@ public class PlatformManager : MonoBehaviour
 	private void Start()
 	{
 		originPosition = transform.position;
-		InitializePlatforms();
+		StartCoroutine(InitializePlatforms());
 	}
 
-	private void InitializePlatforms()
+	private IEnumerator InitializePlatforms()
 	{
 		for(int i = 0; i < maxPlatformsNum; i++)
 		{
@@ -32,7 +34,18 @@ public class PlatformManager : MonoBehaviour
 			Vector2 worldMin = Camera.main.ViewportToWorldPoint(new Vector2(0.1f, 0.08f));
 			Vector2 worldMax = Camera.main.ViewportToWorldPoint(new Vector2(0.9f, 0.88f));
 			Vector2 randomPosition = new Vector2(UnityEngine.Random.Range(worldMin.x, worldMax.x), UnityEngine.Random.Range(worldMin.y, worldMax.y));
-			Instantiate(platformPrefabs[randomPlatform], randomPosition, Quaternion.identity);
+			GameObject newPlatform = Instantiate(platformPrefabs[randomPlatform], randomPosition, Quaternion.identity);
+			activePlatforms.Add(newPlatform);
+		}
+		yield return new WaitForSeconds(0);
+	}
+
+	private void RespawnPlatforms()
+	{
+		if(activePlatforms.Count < 7 /* && platformPrefabs.Count < maxPlatformsNum */)
+		{
+			StartCoroutine(InitializePlatforms());
+
 		}
 	}
 
@@ -43,7 +56,9 @@ public class PlatformManager : MonoBehaviour
 
 	public static IEnumerator KillPlatform(GameObject deadPlatform)
 	{
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(2);
+		platformManagerInstance.activePlatforms.Remove(deadPlatform);
 		Destroy(deadPlatform);
+
 	}
 }
