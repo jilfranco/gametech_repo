@@ -1,32 +1,63 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ClickScript : MonoBehaviour
-{
-    [SerializeField] private Material hoverMaterial;
-    [SerializeField] private Material selectedMaterial;
-    private Material defaultMaterial;
+{   
+    //[SerializeField] private Color hoverColor;
+    //[SerializeField] private Color selectedColor;
+    //private Material defaultMaterial;
+    private SpriteRenderer sprite;
+    //private bool oneHasBeenSelected;
+    //public List<GameObject> selectedPieces;
 
     private void Awake()
     {
-        defaultMaterial = GetComponent<SpriteRenderer>().sharedMaterial;
+        sprite = GetComponent<SpriteRenderer>();
+
     }
 
     private void OnMouseOver()
     {
-        GetComponent<SpriteRenderer>().material = hoverMaterial;
+        sprite.color = Color.blue;
     }
 
     private void OnMouseDown()
     {
-        GetComponent<SpriteRenderer>().material = selectedMaterial;
-        GetComponent<Collider2D>().enabled = false;
         Debug.Log("mouse down");
+
+        if (gameObject.CompareTag("1stSelectedGP"))
+        {
+            Debug.Log("Unselecting 1st");
+            gameObject.tag = "GridPiece";
+            //oneHasBeenSelected = false;
+            GridManager.gridManagerRef.selectedGridPieces.Remove(gameObject);
+        }
+
+        else if (GridManager.gridManagerRef.selectedGridPieces.Count > 0)
+        {
+            Debug.Log("2nd selected");
+            gameObject.tag = "2ndSelectedGP";
+            GridManager.gridManagerRef.selectedGridPieces.Add(gameObject);
+            StartCoroutine(GridManager.gridManagerRef.MovePiece(GridManager.gridManagerRef.selectedGridPieces[0], GridManager.gridManagerRef.selectedGridPieces[1]));
+        }
+
+        else
+        {
+            sprite.color = Color.red;
+            gameObject.tag = "1stSelectedGP";
+            //oneHasBeenSelected = true;
+            GridManager.gridManagerRef.selectedGridPieces.Add(gameObject);
+        }
+
     }
 
     private void OnMouseExit()
     {
-        GetComponent<SpriteRenderer>().material = defaultMaterial;
+        if (!gameObject.CompareTag("1stSelectedGP"))
+        {
+            sprite.color = Color.white;
+        }
     }
 }

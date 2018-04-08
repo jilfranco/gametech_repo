@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - GridPiece
+  - 1stSelectedGP
+  - 2ndSelectedGP
   layers:
   - Default
   - TransparentFX

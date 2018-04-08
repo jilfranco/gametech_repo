@@ -9,6 +9,7 @@ public class GridManager : MonoBehaviour
 
     public List<GameObject> activeGridPieces;
     public List<Vector2> originalPositions;
+    public List<GameObject> selectedGridPieces;
 
     private void Awake()
     {
@@ -45,10 +46,13 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    private void MovePiece(GameObject firstGridPiece, GameObject secondGridPiece)
+    public IEnumerator MovePiece(GameObject firstGridPiece, GameObject secondGridPiece)
     {
-        Vector2 ogPos = firstGridPiece.transform.position;
-        Vector2 newPos = secondGridPiece.transform.position;
+        Vector2 firstGPOGPos = firstGridPiece.transform.position;
+        Vector2 secondGPOGPos = secondGridPiece.transform.position;
+        firstGridPiece.transform.position = secondGPOGPos;
+        secondGridPiece.transform.position = firstGPOGPos;
+        yield return new WaitForSeconds(0);
     }
 
     public bool InOriginalSpot(GameObject gridPiece)
