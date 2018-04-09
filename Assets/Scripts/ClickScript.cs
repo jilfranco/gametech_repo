@@ -2,25 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClickScript : MonoBehaviour
 {   
-    //[SerializeField] private Color hoverColor;
-    //[SerializeField] private Color selectedColor;
-    //private Material defaultMaterial;
     private SpriteRenderer sprite;
-    //private bool oneHasBeenSelected;
-    //public List<GameObject> selectedPieces;
 
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
-
     }
 
-    private void OnMouseOver()
+    private void OnMouseEnter()
     {
-        sprite.color = Color.blue;
+	    if (!gameObject.CompareTag("1stSelectedGP"))
+	    {
+			sprite.color = Color.cyan;
+	    }
     }
 
     private void OnMouseDown()
@@ -29,9 +27,7 @@ public class ClickScript : MonoBehaviour
 
         if (gameObject.CompareTag("1stSelectedGP"))
         {
-            Debug.Log("Unselecting 1st");
             gameObject.tag = "GridPiece";
-            //oneHasBeenSelected = false;
             GridManager.gridManagerRef.selectedGridPieces.Remove(gameObject);
         }
 
@@ -43,11 +39,10 @@ public class ClickScript : MonoBehaviour
             StartCoroutine(GridManager.gridManagerRef.MovePiece(GridManager.gridManagerRef.selectedGridPieces[0], GridManager.gridManagerRef.selectedGridPieces[1]));
         }
 
-        else
+		else
         {
-            sprite.color = Color.red;
+            sprite.color = Color.magenta;
             gameObject.tag = "1stSelectedGP";
-            //oneHasBeenSelected = true;
             GridManager.gridManagerRef.selectedGridPieces.Add(gameObject);
         }
 
@@ -60,4 +55,6 @@ public class ClickScript : MonoBehaviour
             sprite.color = Color.white;
         }
     }
+
+	
 }

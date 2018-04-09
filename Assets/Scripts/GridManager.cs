@@ -2,14 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GridManager : MonoBehaviour
 {
     public static GridManager gridManagerRef;
+	
+	private int piecesLeft;
 
-    public List<GameObject> activeGridPieces;
-    public List<Vector2> originalPositions;
-    public List<GameObject> selectedGridPieces;
+	[SerializeField] private Text piecesLeftText;
+	
+	[SerializeField] private List<int> ignoredTiles;
+	[SerializeField] private List<GameObject> activeGridPieces;
+    [SerializeField] private List<Vector2> originalPositions;
+    [SerializeField] public List<GameObject> selectedGridPieces;
 
     private void Awake()
     {
@@ -37,13 +44,29 @@ public class GridManager : MonoBehaviour
             originalPositions.Add(originalPos);
         }
 
-        var positionCopy = new List<Vector2>(originalPositions);
-        for (int i = 0; i < activeGridPieces.Count; ++i)
+		var usedPositions = new List<int>();
+
+		for (int i = 0; i < activeGridPieces.Count; ++i)
         {
-            int randomIndex = Random.Range(0, positionCopy.Count - 1);
-            activeGridPieces[i].transform.position = positionCopy[randomIndex];
-            positionCopy.RemoveAt(randomIndex);
+			if (ignoredTiles.Contains(i))
+				continue;
+
+            int randomIndex;
+	        do
+	        {
+				randomIndex = Random.Range(0, originalPositions.Count - 1);
+	        } while (ignoredTiles.Contains(randomIndex) || usedPositions.Contains(randomIndex));
+
+            activeGridPieces[i].transform.position = originalPositions[randomIndex];
+            usedPositions.Add(randomIndex);
         }
+
+	    piecesLeft = originalPositions.Count - activeGridPieces.Count(InOriginalSpot);
+	    piecesLeftText.text = "Unsorted Pieces Left: " + piecesLeft;
+		
+
+	    //activeGridPieces[102].transform.position = originalPositions[57];
+	    //activeGridPieces[57].transform.position = originalPositions[102];
     }
 
     public IEnumerator MovePiece(GameObject firstGridPiece, GameObject secondGridPiece)
@@ -52,7 +75,19 @@ public class GridManager : MonoBehaviour
         Vector2 secondGPOGPos = secondGridPiece.transform.position;
         firstGridPiece.transform.position = secondGPOGPos;
         secondGridPiece.transform.position = firstGPOGPos;
+		firstGridPiece.GetComponent<SpriteRenderer>().color = Color.white;
+		selectedGridPieces.Clear();
         yield return new WaitForSeconds(0);
+
+	    piecesLeft = originalPositions.Count - activeGridPieces.Count(InOriginalSpot);
+
+	    piecesLeftText.text = "Unsorted Pieces Left: " + piecesLeft;
+
+	    if (activeGridPieces.All(InOriginalSpot))
+	    {
+		    SceneManager.LoadScene("Scene_End");
+			Debug.Log("hello you've beaten it");
+	    }
     }
 
     public bool InOriginalSpot(GameObject gridPiece)
@@ -64,7 +99,9 @@ public class GridManager : MonoBehaviour
         if (Vector2.Distance(originalPosition, gridPiece.transform.position) < 0.05f)
         {
             inOriginalSpot = true;
-            gridPiece.GetComponent<Collider2D>().enabled = false;
+	        var pieceCollider = gridPiece.GetComponent<Collider2D>();
+	        if (pieceCollider != null)
+		        pieceCollider.enabled = false;
         }
         else
         {
@@ -72,4 +109,9 @@ public class GridManager : MonoBehaviour
         }
         return inOriginalSpot;
     }
+
+	public void ClickQuitGame()
+	{
+		SceneManager.LoadScene("Scene_Menu");
+	}
 }

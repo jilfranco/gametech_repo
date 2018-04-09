@@ -175,7 +175,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: give it a go
+  m_Text: see? relaxing
 --- !u!222 &138486533
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 1198737951}
   - component: {fileID: 1198737950}
   m_Layer: 5
-  m_Name: StartText
+  m_Name: RestartText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,7 +486,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start
+  m_Text: Restart
 --- !u!222 &1198737951
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 1347921602}
   - component: {fileID: 1347921601}
   m_Layer: 5
-  m_Name: StartButton
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
