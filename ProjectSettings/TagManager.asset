@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Magic
+  - Cauldron
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Caldron
+    uniqueID: 740610911
+    locked: 0
+  - name: Magic
+    uniqueID: 3169193031
     locked: 0
