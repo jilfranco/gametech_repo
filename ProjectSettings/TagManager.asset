@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Magic
   - Cauldron
+  - KillSpot
   layers:
   - Default
   - TransparentFX
