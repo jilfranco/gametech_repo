@@ -7,6 +7,7 @@ TagManager:
   - Magic
   - Cauldron
   - KillSpot
+  - Witch
   layers:
   - Default
   - TransparentFX
@@ -44,9 +45,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Witch
+    uniqueID: 1828826939
+    locked: 0
   - name: Caldron
     uniqueID: 740610911
     locked: 0
   - name: Magic
     uniqueID: 3169193031
+    locked: 0
+  - name: BuffsDebuffs
+    uniqueID: 2560818497
+    locked: 0
+  - name: UI
+    uniqueID: 610780737
+    locked: 0
+  - name: MouseGlow
+    uniqueID: 2253057199
     locked: 0

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveMagic : MonoBehaviour
@@ -7,7 +6,6 @@ public class MoveMagic : MonoBehaviour
 	[SerializeField] private float mouseHitCircle;
 	[SerializeField] private MagicType magicColor;
 
-	private Rigidbody2D magicRB;
 	private Collider2D magicCollider;
 
 	private float moveSpeedX, moveSpeedY;
@@ -19,7 +17,6 @@ public class MoveMagic : MonoBehaviour
 		isBeingDragged = false;
 		
 		// get stuff
-		magicRB = GetComponent<Rigidbody2D>();
 		magicCollider = GetComponent<Collider2D>();
 
 
@@ -30,46 +27,13 @@ public class MoveMagic : MonoBehaviour
 		StartCoroutine(RandomlyAdjustSpeed());
 	}
 
-	private IEnumerator RandomlyAdjustSpeed()
-	{
-		// we always want this to happen, so it's always true
-		while (true)
-		{
-			// get the time for lerping. all of them have a random
-			// time, so we give them a range
-			float currentTime = 0.0f;
-			float randomLengthOfTime = Random.Range(0.1f, 0.6f);
-
-			// this is the range of how randomly the pieces move after
-			// being modified
-			float newRandomSpeedX = Random.Range(0.75f, 2.0f);
-			float newRandomSpeedY = Random.Range(-1.2f, 1.2f);
-
-			//this is how we do the random lerping
-			while (currentTime < randomLengthOfTime)
-			{
-				// keep track of the current time against the random time to 
-				// lerp the movements
-				float progress = currentTime / randomLengthOfTime;
-
-				moveSpeedX = Mathf.Lerp(moveSpeedX, newRandomSpeedX, progress);
-				moveSpeedY = Mathf.Lerp(moveSpeedY, newRandomSpeedY, progress);
-				
-				// add the time passed to keep everything going
-				currentTime += Time.deltaTime;
-				
-				yield return new WaitForEndOfFrame();
-			}
-		}
-	}
-
 	void Update()
 	{
 		if (isBeingDragged)
 		{
-			Vector2 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			transform.position = newPosition;
-			//Debug.Log("Follow the mouse here!");
+			Vector2 currentPos = transform.position;
+			Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			transform.position = Vector3.Lerp(currentPos, targetPos, GameManager.gameManagerInstance.mouseSpeed);
 		}
 
 		else
@@ -89,6 +53,7 @@ public class MoveMagic : MonoBehaviour
 		Collider2D colliderMouseHit = Physics2D.OverlapCircle(mousePos, mouseHitCircle);
 		if (colliderMouseHit != null && colliderMouseHit == magicCollider)
 			isBeingDragged = true;
+
 		// Do a Physics2D.OverlapCircle to see if the
 		// circle around the pointer overlaps OUR collider
 		// (you need to make sure it's THIS OBJECT's collider)
@@ -143,6 +108,39 @@ public class MoveMagic : MonoBehaviour
 						GameManager.gameManagerInstance.activeMagicList.Remove(gameObject);
 						break;
 				}
+			}
+		}
+	}
+
+	private IEnumerator RandomlyAdjustSpeed()
+	{
+		// we always want this to happen, so it's always true
+		while (true)
+		{
+			// get the time for lerping. all of them have a random
+			// time, so we give them a range
+			float currentTime = 0.0f;
+			float randomLengthOfTime = Random.Range(0.1f, 0.6f);
+
+			// this is the range of how randomly the pieces move after
+			// being modified
+			float newRandomSpeedX = Random.Range(0.75f, 2.0f);
+			float newRandomSpeedY = Random.Range(-1.2f, 1.2f);
+
+			//this is how we do the random lerping
+			while (currentTime < randomLengthOfTime)
+			{
+				// keep track of the current time against the random time to 
+				// lerp the movements
+				float progress = currentTime / randomLengthOfTime;
+
+				moveSpeedX = Mathf.Lerp(moveSpeedX, newRandomSpeedX, progress);
+				moveSpeedY = Mathf.Lerp(moveSpeedY, newRandomSpeedY, progress);
+				
+				// add the time passed to keep everything going
+				currentTime += Time.deltaTime;
+				
+				yield return new WaitForEndOfFrame();
 			}
 		}
 	}
