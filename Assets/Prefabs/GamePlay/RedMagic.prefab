@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4940514937050662}
   - component: {fileID: 212419098527533340}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Magic
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 50224714375121314}
   - component: {fileID: 114413086856617554}
   - component: {fileID: 58669556618428274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RedMagic
   m_TagString: Magic
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 198450028214284546}
   - component: {fileID: 199150088754930414}
   - component: {fileID: 95597224729865232}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RedMagic
   m_TagString: Magic
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4039133255474316}
   - component: {fileID: 212066800506315980}
   - component: {fileID: 95124421702524864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RedMagicInner
   m_TagString: Magic
   m_Icon: {fileID: 0}

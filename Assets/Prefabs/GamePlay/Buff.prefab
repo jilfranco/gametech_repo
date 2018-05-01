@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4509363640428616}
   - component: {fileID: 212778730899279880}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4023133909049908}
   - component: {fileID: 212094331785904018}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197560797936318}
   - component: {fileID: 212140241301074110}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4541820144421812}
   - component: {fileID: 212112710002417198}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: plus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4451467126532650}
   - component: {fileID: 212014849872589610}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: plus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4996527482420960}
   - component: {fileID: 58709436189909596}
   - component: {fileID: 114281570972104006}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Buff
   m_TagString: Untagged
   m_Icon: {fileID: 0}

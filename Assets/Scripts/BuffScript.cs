@@ -93,21 +93,24 @@ public class BuffScript : MonoBehaviour
 	private void GiveAmountRed()
 	{
 		GameManager.gameManagerInstance.redCollected += 5;
+		GameManager.gameManagerInstance.NotifyGotAmountBuff(MagicType.Red);
 	}
 
 	private void GiveAmountBlue()
 	{
 		GameManager.gameManagerInstance.blueCollected += 5;
+		GameManager.gameManagerInstance.NotifyGotAmountBuff(MagicType.Blue);
 	}
 
 	private void GiveAmountGreen()
 	{
 		GameManager.gameManagerInstance.greenCollected += 5;
+		GameManager.gameManagerInstance.NotifyGotAmountBuff(MagicType.Green);
 	}
 
 	private void GiveTime()
 	{
 		GameManager.gameManagerInstance.roundLength += 5;
-
+		GameManager.gameManagerInstance.NotifyOnBuffTime();
 	}
 }

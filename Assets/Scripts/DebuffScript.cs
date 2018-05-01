@@ -88,7 +88,6 @@ public class DebuffScript : MonoBehaviour
 		}
 	}
 
-
 	private void RemoveAmount()
 	{
 		int randomIndex = Random.Range(0, giveAmountsList.Count);
@@ -98,26 +97,29 @@ public class DebuffScript : MonoBehaviour
 	private void RemoveAmountRed()
 	{
 		GameManager.gameManagerInstance.redCollected -= 5;
+		GameManager.gameManagerInstance.NotifyGotAmountDebuff(MagicType.Red);
 	}
 
 	private void RemoveAmountBlue()
 	{
 		GameManager.gameManagerInstance.blueCollected -= 5;
+		GameManager.gameManagerInstance.NotifyGotAmountDebuff(MagicType.Blue);
 	}
 
 	private void RemoveAmountGreen()
 	{
 		GameManager.gameManagerInstance.greenCollected -= 5;
+		GameManager.gameManagerInstance.NotifyGotAmountDebuff(MagicType.Green);
 	}
 
 	private void RemoveTime()
 	{
 		GameManager.gameManagerInstance.roundLength -= 5;
+		GameManager.gameManagerInstance.NotifyOnDebuffTime();
 	}
 
 	private void SlowDownMouse()
 	{
-		Debug.Log("hello");
 		GameManager.gameManagerInstance.mouseSpeed = debuffMouseSpeed;
 
 		GameManager.gameManagerInstance.StartCoroutine(

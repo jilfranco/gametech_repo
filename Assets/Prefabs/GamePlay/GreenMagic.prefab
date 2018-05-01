@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 50716181300603948}
   - component: {fileID: 114725678586196080}
   - component: {fileID: 58384456268305624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GreenMagic
   m_TagString: Magic
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4887487912896862}
   - component: {fileID: 212539222477290448}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Magic
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 198391181357201454}
   - component: {fileID: 199273663274726870}
   - component: {fileID: 95062561023332442}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GreenMagic
   m_TagString: Magic
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4253551524726560}
   - component: {fileID: 212420497606662900}
   - component: {fileID: 95450775197927644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GreenMagicInner
   m_TagString: Magic
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032147304142850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.450006, y: -2.38, z: 0}
+  m_LocalPosition: {x: 2.535294, y: -0.48705482, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4376557106409876}
@@ -277,7 +277,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1542569611
+  randomSeed: -17636008
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3569,7 +3569,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1125774265
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b0769b59d78515547a3fa272fca117c7, type: 3}
   m_Color: {r: 0.37106568, g: 1, b: 0.26599997, a: 1}
   m_FlipX: 0
@@ -3635,7 +3635,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f92ecb9c467f1114c8684f558ee35121, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3655,7 +3655,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b0769b59d78515547a3fa272fca117c7, type: 3}
-  m_Color: {r: 0.090751566, g: 0.634, b: 0, a: 1}
+  m_Color: {r: 0.04423065, g: 0.309, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

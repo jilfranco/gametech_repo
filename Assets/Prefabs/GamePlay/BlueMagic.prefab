@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4011304616832912}
   - component: {fileID: 212437025252894334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Magic
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 198757262912297250}
   - component: {fileID: 199181323557122898}
   - component: {fileID: 95005728995097698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlueMagic
   m_TagString: Magic
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 50542483431713710}
   - component: {fileID: 114368366116675702}
   - component: {fileID: 58383285072505096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlueMagic
   m_TagString: Magic
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4696019176647408}
   - component: {fileID: 212223883435714028}
   - component: {fileID: 95168343967777414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlueMagicInner
   m_TagString: Magic
   m_Icon: {fileID: 0}
@@ -3569,7 +3569,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1125774265
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b0769b59d78515547a3fa272fca117c7, type: 3}
   m_Color: {r: 0.14099997, g: 0.65983605, b: 1, a: 1}
   m_FlipX: 0

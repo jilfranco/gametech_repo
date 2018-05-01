@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -26,9 +28,36 @@ public class UIScript : MonoBehaviour
 	[SerializeField] private Text totalScore;
 
 	private string redAmount, blueAmount, greenAmount;
-	
+
+	private void Start()
+	{
+		Time.timeScale = 1;
+
+		if (GameManager.gameManagerInstance != null)
+		{
+			GameManager.gameManagerInstance.OnBuffedCauldron += HandleCauldronBuff;
+			GameManager.gameManagerInstance.OnDebuffedCauldron += HandleCauldronDebuff;
+			GameManager.gameManagerInstance.OnBuffTime += HandleTimeBuff;
+			GameManager.gameManagerInstance.OnDebuffTime += HandleTimeDebuff;
+		}
+	}
+
+	private void OnDestroy()
+	{
+		if (GameManager.gameManagerInstance != null)
+		{
+			GameManager.gameManagerInstance.OnBuffedCauldron -= HandleCauldronBuff;
+			GameManager.gameManagerInstance.OnDebuffedCauldron -= HandleCauldronDebuff;
+			GameManager.gameManagerInstance.OnBuffTime -= HandleTimeBuff;
+			GameManager.gameManagerInstance.OnDebuffTime -= HandleTimeDebuff;
+		}
+	}
+
 	void Update()
 	{
+		if (SceneManager.GetActiveScene().name == "Scene_MainMenu")
+			return;
+
 		// fill bar and timer UI
 		float roundLength = GameManager.gameManagerInstance.roundLength;
 		float uiTimeLeft = GameManager.gameManagerInstance.timeRemaining;
@@ -41,6 +70,7 @@ public class UIScript : MonoBehaviour
 		// calculate time for changing bar colors
 		timer.text = uiTimeLeft.ToString("00.0");
 		timeBar.fillAmount = uiTimeLeft / roundLength;
+
 
 		// change bar colors
 		if (uiTimeLeft < 7)
@@ -59,6 +89,53 @@ public class UIScript : MonoBehaviour
 		{
 			EndGameUI();
 		}
+	}
+
+	private void HandleCauldronBuff(MagicType whichCauldron)
+	{
+		switch (whichCauldron)
+		{
+			case MagicType.Red:
+				StartCoroutine(ChangeGraphicColor(cauldronRedAmount, Color.white));
+				break;
+			case MagicType.Blue:
+				StartCoroutine(ChangeGraphicColor(cauldronBlueAmount, Color.white));
+				break;
+			case MagicType.Green:
+				StartCoroutine(ChangeGraphicColor(cauldronGreenAmount, Color.white));
+				break;
+		}
+	}
+
+	private void HandleCauldronDebuff(MagicType whichCauldron)
+	{
+		switch (whichCauldron)
+		{
+			case MagicType.Red:
+				StartCoroutine(ChangeGraphicColor(cauldronRedAmount, Color.black));
+				break;
+			case MagicType.Blue:
+				StartCoroutine(ChangeGraphicColor(cauldronBlueAmount, Color.black));
+				break;
+			case MagicType.Green:
+				StartCoroutine(ChangeGraphicColor(cauldronGreenAmount, Color.black));
+				break;
+		}
+	}
+
+	private void HandleTimeBuff()
+	{
+		StartCoroutine(ChangeGraphicColor(timer, new Color(0.5f,1,0.5f,1)));
+		StartCoroutine(ChangeGraphicColor(timeBar, new Color(0.5f,1,0.5f,1)));
+		StartCoroutine(ChangeGraphicColor(timeBarBG, new Color(0.2f,0.7f,0.2f,0.65f)));
+	}
+
+	private void HandleTimeDebuff()
+	{
+		StartCoroutine(ChangeGraphicColor(timer, new Color(0.9f,0.2f,0.2f,1)));
+		StartCoroutine(ChangeGraphicColor(timeBar, new Color(0.9f,0.2f,0.2f,1)));
+		StartCoroutine(ChangeGraphicColor(timeBarBG, new Color(0.7f,0.2f,0.2f,.65f)));
+
 	}
 
 	public void PauseGameUI()
@@ -92,8 +169,29 @@ public class UIScript : MonoBehaviour
 		SceneManager.LoadScene(sceneToLoad);
 	}
 
+	public void ToggleActive(GameObject menu)
+	{
+		if (!menu.activeInHierarchy)
+		{
+			menu.SetActive(true);
+		}
+
+		else
+		{
+			menu.SetActive(false);
+		}
+	}
+
 	public void Quit()
 	{
 		Application.Quit();
+	}
+
+	private IEnumerator ChangeGraphicColor(Graphic numberToChange, Color recolor)
+	{
+		Color ogColor = numberToChange.color;
+		numberToChange.color = recolor;
+		yield return new WaitForSeconds(1);
+		numberToChange.color = ogColor;
 	}
 }

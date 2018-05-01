@@ -45,12 +45,19 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject buffPrefab;
 	[SerializeField] private GameObject debuffPrefab;
 
+	public event Action<MagicType> OnBuffedCauldron;
+	public event Action<MagicType> OnDebuffedCauldron;
+	public event Action OnBuffTime;
+	public event Action OnDebuffTime;
+
 	void Start()
 	{
 		gameManagerInstance = this;
 		mouseSpeed = 1.0f; // don't start slowed
 		debuffActive = true;
+		buffActive = true;
 		StartCoroutine(DebuffStartDelay());
+		StartCoroutine(BuffStartDelay());
 	}
 
 	void Update()
@@ -96,8 +103,14 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator DebuffStartDelay()
 	{
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(8);
 		debuffActive = false;
+	}
+
+	private IEnumerator BuffStartDelay()
+	{
+		yield return new WaitForSeconds(5);
+		buffActive = false;
 	}
 
 	private void InstanstiateRandomMagic()
@@ -112,16 +125,17 @@ public class GameManager : MonoBehaviour
 	private IEnumerator InstantiateBuff()
 	{
 		buffActive = true;
-		Vector2 instantiationPos = new Vector2(Random.Range(-6.6f, -4.3f), 5.8f);
+		Vector2 instantiationPos = new Vector2(Random.Range(-6.6f, -4.3f), 3.11f);
 		Instantiate(buffPrefab, instantiationPos, Quaternion.identity);
 		yield return new WaitForSeconds(Random.Range(10.0f,15.0f));
+
 		buffActive = false;
 	}
 
 	private IEnumerator InstantiateDebuff()
 	{
 		debuffActive = true;
-		Vector2 instantiationPos = new Vector2(Random.Range(-6.6f, -4.3f), 5.8f);
+		Vector2 instantiationPos = new Vector2(Random.Range(-6.6f, -4.3f), 3.11f);
 		Instantiate(debuffPrefab, instantiationPos, Quaternion.identity);
 		yield return new WaitForSeconds(Random.Range(9.0f,12.0f));
 		debuffActive = false;
@@ -136,8 +150,25 @@ public class GameManager : MonoBehaviour
 	private void EndGame()
 	{
 		totalScore = redCollected + blueCollected + greenCollected;
-
 	}
 
+	public void NotifyGotAmountBuff(MagicType whichType)
+	{
+		OnBuffedCauldron(whichType);
+	}
 
+	public void NotifyGotAmountDebuff(MagicType whichType)
+	{
+		OnDebuffedCauldron(whichType);
+	}
+
+	public void NotifyOnBuffTime()
+	{
+		OnBuffTime();
+	}
+	
+	public void NotifyOnDebuffTime()
+	{
+		OnDebuffTime();
+	}
 }
